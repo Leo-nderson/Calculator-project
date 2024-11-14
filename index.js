@@ -38,3 +38,47 @@ function operate(operator, a, b) {
     default: return null;
   }
 }
+
+function appendDigit(digit) {
+  if (shouldResetDisplay) resetDisplay();
+  displayValue = displayValue === '0' ? digit : displayValue + digit;
+  updateDisplay();
+}
+
+function resetDisplay() {
+  displayValue = '';
+  shouldResetDisplay = false;
+}
+
+function setOperator(operator) {
+  if (currentOperator) evaluate();
+  firstOperand = displayValue;
+  currentOperator = operator;
+  shouldResetDisplay = true;
+}
+
+function evaluate() {
+  if (!currentOperator || shouldResetDisplay) return;
+  secondOperand = displayValue;
+  displayValue = operate(currentOperator, firstOperand, secondOperand).toString();
+  if (displayValue === 'Error') {
+    display.textContent = 'Cannot divide by 0';
+  } else {
+    updateDisplay();
+  }
+  currentOperator = null;
+}
+
+function addDecimal() {
+  if (shouldResetDisplay) resetDisplay();
+  if (!displayValue.includes('.')) displayValue += '.';
+  updateDisplay();
+}
+
+function clear() {
+  displayValue = '0';
+  firstOperand = null;
+  secondOperand = null;
+  currentOperator = null;
+  updateDisplay();
+}
