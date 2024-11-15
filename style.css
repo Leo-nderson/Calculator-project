@@ -1,0 +1,161 @@
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+    
+.calculator-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background: radial-gradient(closest-corner at 60% 55%,#58317c,#1c1c1c);
+    color: whitesmoke;
+    font-family: monospace;
+
+}
+    
+.calculator {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 35%;
+    height: 75%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255, 0));
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255, 0.18);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+}
+
+#display {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
+    height: 15%;
+    font-size: 2.5rem;
+    padding: 0 3.5%;
+    margin: 2% 0;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+  
+#display.updated {
+    transform: scale(1.025);
+    opacity: 0.9; 
+}
+  
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    flex-basis: 100%;
+    height: calc(100% - 18%);
+    gap: 5px;
+    padding: 3.5% 3.5%;
+}
+  
+.item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(255,255,255,0.1),  rgba(255, 255, 255, 0));
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255, 0.18);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.37);
+    color: whitesmoke;
+    border-radius: 10px;
+    font-size: 1.5rem;
+    flex-grow: 1;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+  
+.item::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255, 0));
+    transition: transform 0.3s ease;
+    border-radius: inherit;
+    transform: translate(-100%, -100%);
+}
+  
+.item:hover {
+    transform: translate(0px, -2px);
+    background-color: rgba(88, 49, 124, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.57);
+}
+
+.operator:focus {
+    transform: translate(0px, -2px);
+    background-color: rgba(86, 222, 240, 0.466);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.57);
+  }
+  
+  .digit:active, 
+  .decimal:active, 
+  .toggle-sign:active {
+    transform: translate(0px, -2px);
+    background-color: rgba(221, 30, 189, 0.466);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.57);
+  }
+  
+  .backspace:active{
+    transform: translate(0px, -2px);
+    background-color: rgba(247, 88, 48, 0.466);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.57);
+  }
+  
+  .clear:active{
+    transform: translate(0px, -2px);
+    background-color: rgba(48, 61, 247, 0.466);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.57);
+  }
+  
+  .equal:active {
+    transform: translate(0px, -2px);
+    background-color: rgba(67, 247, 136, 0.466);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.57);
+  }
+  
+  .item:hover::before {
+    transform: translate(0, 0);
+  }
+  
+  .buttons .item:nth-child(-n+3){ 
+    flex-basis: calc(100% / 3 - 5px);
+  }
+  
+  .buttons .item:nth-child(n+4):nth-child(-n+15) { 
+    flex-basis: calc(100% / 4 - 5px);
+  }
+  
+  .buttons .item:nth-child(n+16) { 
+    flex-basis: calc(100% / 4 - 5px);
+  }
+  
+  @media (max-width: 1000px) and (min-width: 450px) {
+    .calculator {
+      flex-basis: 60%;
+    }
+  }
+  
+  @media (max-width: 449px) {
+    .calculator {
+      flex-basis: 90%;
+    }
+    
+    #display {
+      font-size: 2rem;
+    }
+  }
+
+    
+    
+    
+        
