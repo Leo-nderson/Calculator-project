@@ -91,6 +91,69 @@ body {
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.57);
 }
 
+.operator:focus {
+    transform: translate(0px, -2px);
+    background-color: rgba(86, 222, 240, 0.466);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.57);
+  }
+  
+  .digit:active, 
+  .decimal:active, 
+  .toggle-sign:active {
+    transform: translate(0px, -2px);
+    background-color: rgba(221, 30, 189, 0.466);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.57);
+  }
+  
+  .backspace:active{
+    transform: translate(0px, -2px);
+    background-color: rgba(247, 88, 48, 0.466);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.57);
+  }
+  
+  .clear:active{
+    transform: translate(0px, -2px);
+    background-color: rgba(48, 61, 247, 0.466);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.57);
+  }
+  
+  .equal:active {
+    transform: translate(0px, -2px);
+    background-color: rgba(67, 247, 136, 0.466);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.57);
+  }
+  
+  .item:hover::before {
+    transform: translate(0, 0);
+  }
+  
+  .buttons .item:nth-child(-n+3){ 
+    flex-basis: calc(100% / 3 - 5px);
+  }
+  
+  .buttons .item:nth-child(n+4):nth-child(-n+15) { 
+    flex-basis: calc(100% / 4 - 5px);
+  }
+  
+  .buttons .item:nth-child(n+16) { 
+    flex-basis: calc(100% / 4 - 5px);
+  }
+  
+  @media (max-width: 1000px) and (min-width: 450px) {
+    .calculator {
+      flex-basis: 60%;
+    }
+  }
+  
+  @media (max-width: 449px) {
+    .calculator {
+      flex-basis: 90%;
+    }
+    
+    #display {
+      font-size: 2rem;
+    }
+  }
 
     
     
