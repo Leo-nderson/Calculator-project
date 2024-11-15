@@ -82,3 +82,40 @@ function clear() {
   currentOperator = null;
   updateDisplay();
 }
+
+function backspace() {
+  displayValue = displayValue.slice(0, -1) || '0';
+  updateDisplay();
+}
+
+function toggleSign() {
+  if (displayValue !== '0') {
+    displayValue = displayValue.startsWith('-') ? displayValue.slice(1) : '-' + displayValue;
+    updateDisplay();
+  }
+}
+
+
+function updateDisplay() {
+  if (displayValue.length > 11) {
+    if (parseFloat(displayValue) > 99999999999 || parseFloat(displayValue) < -9999999999) {
+      displayValue = parseFloat(displayValue).toExponential(6);
+    } else {
+      displayValue = parseFloat(displayValue).toPrecision(11);
+    }
+  }
+
+  display.textContent = displayValue;
+
+  display.classList.add('updated');
+  setTimeout(() => display.classList.remove('updated'), 200);
+}
+
+function handleKeyboardInput(e) {
+  if (e.key >= 0 && e.key <= 9) appendDigit(e.key);
+  if (e.key === '.') addDecimal();
+  if (e.key === '=' || e.key === 'Enter') evaluate();
+  if (e.key === 'Backspace') backspace();
+  if (e.key === 'Escape') clear();
+  if (['+', '-', '*', '/'].includes(e.key)) setOperator(e.key);
+}
